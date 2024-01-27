@@ -4,6 +4,7 @@ import 'package:igapp/screens/igenthu.dart';
 import 'package:igapp/screens/igleader2.dart';
 import 'package:igapp/screens/notification_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:igapp/screens/picoftheday.dart';
 import 'package:shadow/shadow.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -122,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                            'Schedule',style:GoogleFonts.poppins(fontSize: height*0.04,fontWeight: FontWeight.w500)
+                            'Schedule',style:GoogleFonts.prozaLibre(fontSize: height*0.04,fontWeight: FontWeight.w500)
                         ),
                       ),
                     )
@@ -159,8 +160,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Enthu",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
-                              Text("Points",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
+                              Text("Enthu",style:GoogleFonts.prozaLibre(fontSize: height*0.03,fontWeight: FontWeight.w500),),
+                              Text("Points",style:GoogleFonts.prozaLibre(fontSize: height*0.03,fontWeight: FontWeight.w500),),
                             ],
 
                           ),
@@ -186,8 +187,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Leader",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
-                            Text("Board",style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500),),
+                            Text("Leader",style:GoogleFonts.prozaLibre(fontSize: height*0.03,fontWeight: FontWeight.w500),),
+                            Text("Board",style:GoogleFonts.prozaLibre(fontSize: height*0.03,fontWeight: FontWeight.w500),),
                           ],
                         ),
                       ),
@@ -198,57 +199,60 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Stack(
-              children:[
-                Container(
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>picture()));
+              },
+              child: Stack(
+                children:[
+                  Container(
 
-                  height: height*0.2,
-                  width: width*0.9,
-                  decoration: BoxDecoration(
+                    height: height*0.2,
+                    width: width*0.9,
+                    decoration: BoxDecoration(
 
-                    borderRadius: BorderRadius.circular(height*0.02),
-                    color: Colors.white,
-                    image:DecorationImage(image: AssetImage("deptlogos/PIC.jpg"),fit: BoxFit.cover) ,
-
-                  ),
-
-                ),
-
-
-                Container(
-
-                  height: height*0.2,
-                  width: width*0.9,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white54,
-                          Colors.transparent,
-                        ],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft
-                      ),
                       borderRadius: BorderRadius.circular(height*0.02),
+                      color: Colors.white,
+                      image:DecorationImage(image: AssetImage("deptlogos/PIC.jpg"),fit: BoxFit.cover) ,
+
+                    ),
+
                   ),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                            'Pic of  ',style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500)
+                  Container(
+
+                    height: height*0.2,
+                    width: width*0.9,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.white54,
+                            Colors.transparent,
+                          ],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft
                         ),
-                        Text(
-                            'the  ',style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500)
-                        ),
-                        Text(
-                            'Day  ',style:GoogleFonts.poppins(fontSize: height*0.03,fontWeight: FontWeight.w500)
-                        ),
-                      ],
+                        borderRadius: BorderRadius.circular(height*0.02),
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                              'Pic of  ',style:GoogleFonts.prozaLibre(fontSize: height*0.03,fontWeight: FontWeight.w500)
+                          ),
+                          Text(
+                              'the  ',style:GoogleFonts.prozaLibre(fontSize: height*0.03,fontWeight: FontWeight.w500)
+                          ),
+                          Text(
+                              'Day  ',style:GoogleFonts.prozaLibre(fontSize: height*0.03,fontWeight: FontWeight.w500)
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top:30),

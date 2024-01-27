@@ -17,7 +17,7 @@ class  IgViewModel{
     final response= await _repo.fetchIgApi();
     return response;
   }
-  Future<imagemodel> fetchIgimageApi() async{
+  Future<List<imagemodel>> fetchIgimageApi() async{
     final response= await _repo.fetchIgimageApi();
     return response;
   }

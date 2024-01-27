@@ -70,15 +70,16 @@ class IgRepository{
       throw Exception("Error");
     }
   }
-  Future<imagemodel> fetchIgimageApi()async {
+  Future <List<imagemodel>> fetchIgimageApi()async {
     String url = 'https://campaverse-production.up.railway.app/api/v1/images';
     final response = await http.get(Uri.parse(url));
     if (kDebugMode) {
       print(response.body);
     }
     if (response.statusCode == 200) {
-      final body = jsonDecode(response.body);
-      return imagemodel.fromJson(body);
+      final List<dynamic> body = jsonDecode(response.body);
+      final List<imagemodel> images = body.map((item) => imagemodel.fromJson(item)).toList();
+      return images;
     } else {
       throw Exception("Error");
     }
