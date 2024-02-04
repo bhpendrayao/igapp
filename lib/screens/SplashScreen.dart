@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:igapp/Screens/HomeScreen.dart';
 import 'package:igapp/Screens/SplashScreen2.dart';
 
 
@@ -42,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
         child: AnimatedBuilder(
           animation: _animationController,
@@ -51,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
               width: _animation.value,
               height: _animation.value,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.black87,
                 image:DecorationImage(
                   image: AssetImage("deptlogos/logo-removebg-preview.png"),
                 )

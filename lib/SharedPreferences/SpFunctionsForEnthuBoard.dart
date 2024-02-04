@@ -68,7 +68,7 @@ void EsaveChemminToSharedPreferences(int points) async {
 // Function to retrieve CSE points from Shared Preferences
 Future<int?> EgetChemminFromSharedPreferences() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getInt('chemminE');
+  return prefs.getInt('chemminpE');
 }//
 void EsaveArchiToSharedPreferences(int points) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();

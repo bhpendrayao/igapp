@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
-
-import 'package:igapp/Screens/HomeScreen.dart';
+import 'HomeScreen3.dart';
 class TextScreen extends StatefulWidget {
   @override
   _TextScreenState createState() => _TextScreenState();
@@ -12,6 +12,7 @@ class _TextScreenState extends State<TextScreen> {
 
   late Widget displayedWidget;
   late Timer timer;
+  late Timer go;
 
   @override
   void initState() {
@@ -22,47 +23,55 @@ class _TextScreenState extends State<TextScreen> {
     timer = Timer(Duration(seconds: 2), () {
       setState(() {
         displayedWidget = Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: Text("INSTITUTE",style: TextStyle(fontSize: 24,color: Colors.white)),
+              padding:  EdgeInsets.only(top:MediaQuery.of(context).size.height*0.03),
+              child: Text("INSTITUTE",style: GoogleFonts.prozaLibre(fontSize:MediaQuery.of(context).size.height*0.03,color: Colors.white)),
             ),
-            Text("GATHERING 24'",style: TextStyle(fontSize: 24,color: Colors.white)),
+            Text("GATHERING 24'",style: GoogleFonts.prozaLibre(fontSize:MediaQuery.of(context).size.height*0.03,color: Colors.white)),
+
             Padding(
-              padding: const EdgeInsets.only(top: 120),
-              child: ElevatedButton(onPressed: (){
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) =>HomeScreen(),
+              padding:  EdgeInsets.only(top:MediaQuery.of(context).size.height*0.3),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Developed by",style: GoogleFonts.prozaLibre(fontSize:MediaQuery.of(context).size.height*0.015,color: Colors.amberAccent,fontWeight: FontWeight.w700),),
+                          CircleAvatar(
+                            backgroundImage: AssetImage('deptlogos/ids333-removebg-preview.png'),
+                            backgroundColor: Colors.black,
+                            radius: MediaQuery.of(context).size.height*0.07,
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                );
-              },
-                child: Text("Get Started",style: TextStyle(color: Colors.black,fontSize: 25),),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white, // Set the background color of the button
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0), // Set the border radius
-                  ),),
+
+                ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Developed by",style: TextStyle(fontSize: 12,color: Colors.amberAccent),),
-                CircleAvatar(
-                  backgroundImage: AssetImage('deptlogos/ids333-removebg-preview.png'),
-                  backgroundColor: Colors.black,
-                  radius: MediaQuery.of(context).size.height*0.03,
-                )
-              ],
-            )
 
 
 
 
           ],
 
+        );
+      });
+    });
+
+    go= Timer(Duration(seconds: 3),(){
+      setState(() {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) =>HomeScreen3(),
+          ),
         );
       });
     });
@@ -83,7 +92,7 @@ class _TextScreenState extends State<TextScreen> {
 
       body: Column(
         children: [
-          Container(height: height*0.3,),
+          Container(height: height*0.2,),
           Center(
             child: Text("अद्वैतम्",style: TextStyle(fontSize: height*0.1,color: Colors.white),),
           ),

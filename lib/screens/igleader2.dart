@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:igapp/models/ig_leader_model.dart';
-//import 'package:provider/provider.dart';
 import '../SharedPreferences/SpFunctionsForLeaderB.dart';
-import '../models/ig_enthu_model.dart';
 import '../view_model/ig_view_model.dart';
-//import 'package:igapp/Theme/ThemeModal.dart';
 
+import 'package:igapp/screens/StudentCouncilInfo.dart';
+import 'package:igapp/screens/ig_schedule_screen.dart';
+import 'package:igapp/screens/idsScreen.dart';
 
 class IgLeaderScreen extends StatefulWidget {
   const IgLeaderScreen({super.key});
@@ -18,41 +17,42 @@ class IgLeaderScreen extends StatefulWidget {
 }
 
 class _IgLeaderScreenState extends State<IgLeaderScreen> {
-
   late Future<igleadermodel> leaderModelFuture;
   bool isDataFetched = false;
   late int csep;
-  late var cseval1;
+  late AsyncSnapshot<int> cseval1 = AsyncSnapshot<int>.nothing();
+  late AsyncSnapshot<int> mechval1 = AsyncSnapshot<int>.nothing();
+  late AsyncSnapshot<int> eceval1 = AsyncSnapshot<int>.nothing();
+  late AsyncSnapshot<int> civval1 = AsyncSnapshot<int>.nothing();
+  late AsyncSnapshot<int> chemminval1 = AsyncSnapshot<int>.nothing();
+  late AsyncSnapshot<int> eeeval1 = AsyncSnapshot<int>.nothing();
+  late AsyncSnapshot<int> metaval1 = AsyncSnapshot<int>.nothing();
+  late AsyncSnapshot<int> archival1 = AsyncSnapshot<int>.nothing();
+
+// Initialize the other variables in a similar manner
+
+// Rest of your code...
+
   late AsyncSnapshot<int> cseval = AsyncSnapshot<int>.nothing();
   late int mechp;
-  late var mechval1;
   late AsyncSnapshot<int> mechval = AsyncSnapshot<int>.nothing();
   late int civp;
-  late var civval1;
   late AsyncSnapshot<int> civval = AsyncSnapshot<int>.nothing();
   late int metap;
-  late var metaval1;
   late AsyncSnapshot<int> metaval = AsyncSnapshot<int>.nothing();
   late int chemminp;
-  late var chemminval1;
   late AsyncSnapshot<int> chemminval = AsyncSnapshot<int>.nothing();
   late int archip;
-  late var archival1;
   late AsyncSnapshot<int> archival = AsyncSnapshot<int>.nothing();
   late int ecep;
-  late var eceval1;
   late AsyncSnapshot<int> eceval = AsyncSnapshot<int>.nothing();
   late int eeep;
-  late var eeeval1;
   late AsyncSnapshot<int> eeeval = AsyncSnapshot<int>.nothing();
-
 
   IgViewModel igViewModel = IgViewModel();
   Future<void> _refreshData() async {
-//     // Fetch the updated data from the API
     await igViewModel.fetchIgleaderApi();
-    // Trigger a rebuild with the new data
-   setState(() {});
+    setState(() {});
   }
 
   @override
@@ -143,48 +143,125 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width * 1;
+    final height = MediaQuery.of(context).size.height * 1;
 
-      final width = MediaQuery
-          .of(context)
-          .size
-          .width * 1;
-      final height = MediaQuery
-          .of(context)
-          .size
-          .height * 1;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
+        leading: Padding(
+          padding:  EdgeInsets.only(top: height*0.01),
+          child: IconButton(
+            icon: Icon(
+              Icons.arrow_left,
+              color: Color(0xFF82AC57),
+              size: height * 0.06,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
+        title: Padding(
+          padding:  EdgeInsets.only(top: height*0.037),
+          child: Text(
+            "LEADER BOARD",
+            style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.029,fontWeight: FontWeight.w700),
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding:  EdgeInsets.only(top: height*0.02,right: width*0.03),
+            child: IconButton(
+              onPressed: _refreshData,
+              icon:  Icon(Icons.refresh,size: height*0.04,),
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
 
-      return Scaffold(
-        appBar: AppBar(
-          backgroundColor:Colors.black87,
 
-          title: Text(
-            'IG LEADERBOARD',
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: Colors.lightGreen,
+        shape:const CircleBorder(
+            side: BorderSide(width: 4,
+              color: Color(0xFF82AC57),)
+        ),
+
+        child: ClipRRect(
+            borderRadius:BorderRadius.circular(width*0.07) ,
+            child: CircleAvatar(
+                radius: width*0.06,
+                child: Image.asset('NavigationBaritems/podium.png'))),
+        onPressed: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) =>IgLeaderScreen()));
+
+        },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        height: height*0.1,
+        color:  Color(0xFF262626),
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 0,
+
+        clipBehavior: Clip.hardEdge,
+        child: new Row(
+
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            IconButton(
+
+              icon: Icon(Icons.home ,size: height*0.05,),
+
+              onPressed: () => Navigator.of(context).pop(),
+              color:  Colors.white,
             ),
 
-          ),
-            actions: [
-          IconButton(onPressed: _refreshData, icon: Icon(Icons.refresh),),
-        ],
+            IconButton(
+              icon: Icon(Icons.calendar_month ,size: height*0.05),
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) =>IgScheduleScreen()));
+              },
+              color:Colors.white,
+            ),
+            IconButton(
+              icon: Icon(Icons.groups,size: height*0.05),
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) =>StudentCouncilinfo()));
+              },
+              color: Colors.white,
+            ),
+            IconButton(
+              icon: Icon(Icons.code,size: height*0.05),
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) =>IdsScreen()));
+              },
+              color: Colors.white,
+            ),
+          ],
         ),
-        body: Column(
-          children: [
-            Expanded(
-              child: FutureBuilder<igleadermodel>(
+      ),
+      backgroundColor: Colors.black,
+      body: Column(
+        children: [
+          Expanded(
+            child: FutureBuilder<igleadermodel>(
                 future: leaderModelFuture,
-                builder: (BuildContext context,
-                    AsyncSnapshot<dynamic> snapshot) {
+                builder:
+                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: SpinKitCircle(
                         size: 50,
                         color: Colors.green,
                       ),
                     );
-                  } else if (snapshot.hasError) {
+                  }
+                  else if (snapshot.hasError) {
                     cseval1 = cseval;
                     mechval1 = mechval;
                     eceval1 = eceval;
@@ -193,8 +270,8 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
                     eeeval1 = eeeval;
                     metaval1 = metaval;
                     archival1 = archival;
-                  } else
-                  if (snapshot.data == null || snapshot.data.points == null) {
+                  } else if (snapshot.data == null ||
+                      snapshot.data.points == null) {
                     return Center(
                       child: Text(
                         'No Data Available :-( Try after 24 Hours',
@@ -214,7 +291,6 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
                     ecep = snapshot.data.points.eCE ?? ecep;
                     eeep = snapshot.data.points.eEE ?? eeep;
                     civp = snapshot.data.points.cIVIL ?? civp;
-
 
                     saveCseToSharedPreferences(csep);
                     saveArchiToSharedPreferences(archip);
@@ -306,12 +382,11 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
                         (eeeval.connectionState == ConnectionState.none ||
                             eeeval.connectionState ==
                                 ConnectionState.waiting)) {
-                      // Fetch the CSE value only once when the AsyncSnapshot is not done yet
                       getEeeFromSharedPreferences().then((value) {
                         setState(() {
                           eeeval = AsyncSnapshot<int>.withData(
                             ConnectionState.done,
-                            value ?? eeep, // Provide a default value if null
+                            value ?? eeep,
                           );
                           isDataFetched = true;
                         });
@@ -321,12 +396,11 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
                         (archival.connectionState == ConnectionState.none ||
                             archival.connectionState ==
                                 ConnectionState.waiting)) {
-                      // Fetch the CSE value only once when the AsyncSnapshot is not done yet
                       getArchiFromSharedPreferences().then((value) {
                         setState(() {
                           archival = AsyncSnapshot<int>.withData(
                             ConnectionState.done,
-                            value ?? archip, // Provide a default value if null
+                            value ?? archip,
                           );
                           isDataFetched = true;
                         });
@@ -336,122 +410,124 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
                         (metaval.connectionState == ConnectionState.none ||
                             metaval.connectionState ==
                                 ConnectionState.waiting)) {
-                      // Fetch the CSE value only once when the AsyncSnapshot is not done yet
                       getMetaFromSharedPreferences().then((value) {
                         setState(() {
                           metaval = AsyncSnapshot<int>.withData(
                             ConnectionState.done,
-                            value ?? metap, // Provide a default value if null
+                            value ?? metap,
                           );
                           isDataFetched = true;
                         });
                       });
                     }
                   }
-                  List<String> departmentNames = [
-                    'CSE',
-                    'MECH',
-                    'CIVIL',
-                    'META',
-                    'CHEMMIN',
-                    'ARCHI',
-                    'ECE',
-                    'EEE',
-                  ];
-                  List<String> points = [
-                    cseval.data.toString() ?? cseval1.data.toString(),
-                    mechval.data.toString() ?? mechval1.data.toString(),
-                    civval.data.toString() ?? civval1.data.toString(),
-                    metaval.data.toString() ?? metaval1.data.toString(),
-                    chemminval.data.toString() ?? chemminval1.data.toString(),
-                    archival.data.toString() ?? archival1.data.toString(),
-                    eceval.data.toString() ?? eceval1.data.toString(),
-                    eeeval.data.toString() ?? eeeval1.data.toString(),
+                  List<Map<String, dynamic>> departmentData = [
+                    {'name': 'CSE', 'points': cseval.data ?? cseval1.data ?? 0},
+                    {'name': 'MECH', 'points': mechval.data ?? mechval1.data ?? 0},
+                    {'name': 'CIVIL', 'points': civval.data ?? civval1.data ?? 0},
+                    {'name': 'META', 'points': metaval.data ?? metaval1.data ?? 0},
+                    {'name': 'CHEM-MIN', 'points': chemminval.data ?? chemminval1.data ?? 0},
+                    {'name': 'ARCHI', 'points': archival.data ?? archival1.data ?? 0},
+                    {'name': 'ECE', 'points': eceval.data ?? eceval1.data ?? 0},
+                    {'name': 'EEE', 'points': eeeval.data ?? eeeval1.data ?? 0},
                   ];
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    child: DataTable(
-                        columns: [
-                          DataColumn(
-                            label: Text(
-                              'INDEX',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.lightGreen,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              'LEADERBOARD',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.lightGreen,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              'POINTS',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.lightGreen,
-                              ),
-                            ),
-                          ),
-                        ],
-                        rows: List.generate(departmentNames.length, (index) {
-                          String departmentName = departmentNames[index];
-                          String Points = points[index];
+                      departmentData.sort((a, b) => b['points'].compareTo(a['points']));
 
-                          return DataRow(cells: [
-                            DataCell(
-                              Text(
-                                (index + 1).toString(),
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.lightGreen,
+                      List<String> departmentNames = departmentData.map((data) => data['name'] as String).toList();
+                      List<String> pointList = departmentData.map((data) => data['points'].toString()).toList();
+
+
+
+                      return Padding(
+                        padding: EdgeInsets.symmetric( horizontal: width*0.04, vertical: height * 0.030),
+                        child: ListView.builder(
+                          itemCount: departmentNames.length,
+                          itemBuilder: (context, index) {
+                            String departmentName = departmentNames[index];
+                            String points = pointList[index];
+
+                            return Padding(
+                              padding:  EdgeInsets.symmetric(horizontal: width*.040,vertical: height*0.01),
+                              child: Container(
+                               height: height*0.070,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: index + 1 == 1 ? Colors.white: Color.fromRGBO(107, 230, 76, 0.60),
+
                                 ),
-                              ),
-                            ),
-                            DataCell(
-                              Text(
-                                departmentName,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.lightGreen,
+                                  color: index + 1 == 1 ? Color(0xFF82AC57) :index + 1 == 2 ? Color.fromRGBO(107, 230, 76, 0.30) : Colors.black,
+                                  borderRadius: BorderRadius.all(Radius.circular(width*0.03)),
                                 ),
-                              ),
-                            ),
-                            DataCell(
-                              Text(
-                                Points,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.lightGreen,
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding:  EdgeInsets.symmetric(vertical: height*0.0075,horizontal: width*0.02),
+                                      child: Container(
+                                        width: width*0.10,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular((width*0.2)),
+                                          color: index + 1 == 1 ? Colors.white: Color(0xFF82AC57),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                              (index+1).toString(),
+                                            style: GoogleFonts.roboto(
+                                              color: index + 1 == 1 ? Colors.black87: Colors.white,
+                                              fontSize: height*0.03,
+                                              fontWeight: FontWeight.w700
+                                            ),
+
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:  EdgeInsets.symmetric(vertical: height*0.0078,horizontal: width*0.02),
+                                      child: SizedBox(
+                                        width: width*0.3,
+
+                                        child: Text(
+                                          departmentName,
+                                          style: GoogleFonts.roboto(
+                                              color: index + 1 == 1 ? Colors.black87: Colors.white,
+                                              fontSize: height*0.02,
+                                              fontWeight: FontWeight.w700
+                                          ),
+
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:  EdgeInsets.symmetric(vertical: height*0.0078,horizontal: width*0.01),
+                                      child: SizedBox(
+                                        width: width*0.3,
+
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            points,
+                                            style: GoogleFonts.roboto(
+                                                color: index + 1 == 1 ? Colors.black87: Colors.white,
+                                                fontSize: height*0.02,
+                                                fontWeight: FontWeight.w700
+                                            ),
+
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
+
                               ),
-                            ),
-
-                          ]);
-                        })
-
-
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      );
-
+                            );
+                          },),
+                      );
+                }),
+          ),
+        ],
+      ),
+    );
   }
 }

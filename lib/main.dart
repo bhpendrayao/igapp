@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:igapp/screens/SplashScreen.dart';
-import 'package:igapp/screens/home_screen.dart';
 import 'package:igapp/screens/ig_schedule_screen.dart';
 
 void main() {
@@ -33,6 +32,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        iconTheme: IconThemeData(color: Colors.white),
         useMaterial3: true,
       ),
       home: SplashScreen(),
