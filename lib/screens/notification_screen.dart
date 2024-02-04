@@ -58,7 +58,7 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
 
             SizedBox(
               height: height,
-              width: width*0.7,
+              width: width,
               child: FutureBuilder<notificationmodel>(
                 future: igViewModel.fetchIgnotificationApi(),
                 builder:
@@ -81,7 +81,7 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                               "null") {
                             DateTime dateTime = DateTime.parse(snapshot.data!.notifications![index].timeAtCreate.toString());
                               return Padding(
-                                padding:  EdgeInsets.symmetric(horizontal: width*.047, vertical: height*0.01,),
+                                padding:  EdgeInsets.symmetric(horizontal: width*.06, vertical: height*0.01,),
                                 child: SingleChildScrollView(
                                   child: Card(
 
@@ -103,8 +103,9 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
                                                   format.format(dateTime),
                                                   maxLines: 1,
                                                   textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(color: Colors.white,
-                                                      fontSize: height*0.013
+                                                  style: GoogleFonts.roboto(color: Colors.black87,
+                                                      fontSize: height*0.013,
+                                                    fontWeight: FontWeight.w700
                                                   )),
                                             ),
                                           ],
