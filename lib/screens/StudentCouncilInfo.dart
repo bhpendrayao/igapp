@@ -8,17 +8,17 @@ class StudentCouncilinfo extends StatelessWidget {
   final List<String> image = [
     'images/StudentCouncilImages/HRUSHIKESH JADHAV.jpg',
     'images/StudentCouncilImages/MT22STR010_VINAYAK.jpg',
-    'images/StudentCouncilImages/mrunal.jpg',
-    'images/StudentCouncilImages/Yashasvi Therkar.jpg',
+    'images/StudentCouncilImages/Minza Shahid.jpg',
+    'images/StudentCouncilImages/BT20MEC002_ADITYA.jpg',
     'images/StudentCouncilImages/Dhanesh Choudhary.jpg',
     'images/StudentCouncilImages/BT20EEE019_Nikhil_Bhisle.jpg',
     'images/StudentCouncilImages/Satyan Patil.jpg',
     'images/StudentCouncilImages/Samruddhi Wagh.jpg',
     'images/StudentCouncilImages/GANJI NAYAN.jpg',
-    'images/StudentCouncilImages/Minza Shahid.jpg',
+    'images/StudentCouncilImages/mrunal.jpg',
     'images/StudentCouncilImages/Ayush Chavan.jpg',
     'images/StudentCouncilImages/Alisha Hatalkar.jpg',
-    'images/StudentCouncilImages/BT20MEC002_ADITYA.jpg',
+  'images/StudentCouncilImages/Yashasvi Therkar.jpg',
     'images/StudentCouncilImages/BT20MEC018 BRAHMANAND Khandale.jpg',
     'images/StudentCouncilImages/Gaurav Mishra.jpg'
   ];
@@ -29,31 +29,31 @@ class StudentCouncilinfo extends StatelessWidget {
     'MAGAZINE AND LITERARY SECRETARY',
     'TRAINING AND PLACEMENT SECRETARY',
     'TECHNICAL AFFAIRS SECRETARY',
-    'SPORTS SCERETARY',
+    'SPORTS SECRETARY',
     'CULTURAL SECRETARY',
-    'PG SPORTS SEC. & CULTURAL AFFAIRS',
+    'PG SPORTS SEC. & CULTURAL SECRETARY',
     'LADIES REPRESENTATIVE',
     'HOSTEL AFFAIRS SECRETARY (BOYS)',
     'HOSTEL AFFAIRS SECRETARY (GIRLS)',
     'SOCIAL AFFAIRS SECRETARY',
-    'ALUMNI SECRETARY',
+    'ALUMNI SECRETARY SECRETARY',
     'ACADEMIC AFFAIRS SECRETARY',
   ];
   final List<String> councilnames = [
     'HRUSHIKESH JADHAV',
     'VINAYAK',
-    'MRUNAL SONAWANE',
-    'YASHASVI THERKAR',
+    'MINZA SHAHID',
+    'ADITYA MISHRA',
     'DHANESH ',
-    'BHISLE NIKHIL',
+    'NIKHIL BHISLE',
     'SATYAN PATIL',
     'SAMRUDDHI WAGH',
-    'CHANDRAKANT',
-    'MINZA SHAHID',
-    'CHAVAN AYUSH',
+    'NAYAN GANJI',
+    'MRUNAL SONAWANE',
+    'AYUSH CHAVAN',
     'ALISHA HATALKAR ',
-    'ADITYA MISHRA',
-    'BRAHMANAND',
+    'YASHASVI THERKAR',
+    'BHRAMANAND',
     'GAURAV MISHRA',
   ];
 
@@ -63,29 +63,30 @@ class StudentCouncilinfo extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: EdgeInsets.only(top: height*0.005),
-          child: IconButton(
-            icon:  Icon(
-              Icons.arrow_left,
-              color: Colors.green,
-              size: height * 0.06,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
+       backgroundColor: Colors.black87,
+        leading: IconButton(
+          icon:  Icon(
+            Icons.arrow_left,
+            color: Colors.green,
+            size: height * 0.05
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Padding(
-          padding: EdgeInsets.only(top: height*0.03),
-          child: Text(
-            "STUDENT COUNCIL",
-              style: GoogleFonts.prozaLibre(
-                  fontSize: height*0.02,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700
-              ) ),
+        title: Row(
+          children: [
+            Padding(
+              padding:  EdgeInsets.only(left: width*0.13),
+              child: Text(
+                "STUDENT COUNCIL",
+                  style: GoogleFonts.prozaLibre(
+                      fontSize: height*0.019,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700
+                  ) ),
+            ),
+          ],
         ),
         centerTitle: true,
-        backgroundColor: Colors.black,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -155,7 +156,7 @@ class StudentCouncilinfo extends StatelessWidget {
       ),
       backgroundColor: Colors.black,
       body:Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.06, vertical: height * 0.02),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.03, vertical: height * 0.02),
         child: GridView.builder(
           shrinkWrap: true, // Set shrinkWrap to true
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -166,7 +167,7 @@ class StudentCouncilinfo extends StatelessWidget {
           itemCount: councilnames.length,
           itemBuilder: (context, index) {
             return SizedBox(
-              height: height * 0.7,
+              height: height * 0.9,
               width: width * 0.4,
               child: ClipRRect(
                 child: CouncilContainer(
@@ -202,33 +203,63 @@ class CouncilContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded( // Wrap with Expanded
-            child: CircleAvatar(
-              radius: width * 0.199,
-              backgroundImage: AssetImage(imageUrl),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              name,
-              style: GoogleFonts.prozaLibre(
-                fontSize: height * 0.008,
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
+            child:Container(
+              width: width * 0.4,
+              height: height * 0.8,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(width * 0.02),
+                  border: Border.all(
+                    color: Color(0xFF82AC57),
+                    width: width * 0.0052,
+                  )
               ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              post,
-              style: GoogleFonts.prozaLibre(
-                fontSize: height * 0.005,
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
+              child: Column(
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.only(top: height*0.005),
+                    child: Padding(
+                      padding:  EdgeInsets.all(width*0.01),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+
+                            child: Image.asset(imageUrl),
+                            height: height*0.15,
+                            width: width*0.7,),
+
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              name,
+                              style: GoogleFonts.prozaLibre(
+                                fontSize: height * 0.008,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              post,
+                              style: GoogleFonts.prozaLibre(
+                                fontSize: height * 0.006,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
+
             ),
           ),
+
         ],
       ),
     );

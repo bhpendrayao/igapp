@@ -5,6 +5,16 @@ import 'package:igapp/models/ig_leader_model.dart';
 import '../SharedPreferences/SpFunctionsForLeaderB.dart';
 import '../view_model/ig_view_model.dart';
 
+import 'package:igapp/DeptScreens/ChemicalScreen.dart';
+import 'package:igapp/DeptScreens/EceScreen.dart';
+import 'package:igapp/DeptScreens/EeeScreen.dart';
+import 'package:igapp/DeptScreens/MechScreen.dart';
+import 'package:igapp/DeptScreens/MetaScreen.dart';
+
+import 'package:igapp/DeptScreens/ArchiScreen.dart';
+import 'package:igapp/DeptScreens/CivilScreen.dart';
+import 'package:igapp/DeptScreens/CseScreen.dart';
+
 import 'package:igapp/screens/StudentCouncilInfo.dart';
 import 'package:igapp/screens/ig_schedule_screen.dart';
 import 'package:igapp/screens/idsScreen.dart';
@@ -149,33 +159,34 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        leading: Padding(
-          padding:  EdgeInsets.only(top: height*0.01),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_left,
-              color: Color(0xFF82AC57),
-              size: height * 0.06,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_left,
+            color: Color(0xFF82AC57),
+            size: height * 0.05,
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Padding(
-          padding:  EdgeInsets.only(top: height*0.037),
-          child: Text(
-            "LEADER BOARD",
-            style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.029,fontWeight: FontWeight.w700),
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "LEADER BOARD",
+              style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.02,fontWeight: FontWeight.w700),
+            ),
+          ],
         ),
         centerTitle: true,
         actions: [
-          Padding(
-            padding:  EdgeInsets.only(top: height*0.02,right: width*0.03),
-            child: IconButton(
-              onPressed: _refreshData,
-              icon:  Icon(Icons.refresh,size: height*0.04,),
-              color: Colors.white,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: _refreshData,
+                icon:  Icon(Icons.refresh,size: height*0.04,),
+                color: Colors.white,
+              ),
+            ],
           ),
         ],
       ),
@@ -440,73 +451,107 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
 
 
                       return Padding(
-                        padding: EdgeInsets.symmetric( horizontal: width*0.04, vertical: height * 0.030),
+                        padding: EdgeInsets.symmetric( horizontal: width*0.04, vertical: height * 0.020),
                         child: ListView.builder(
                           itemCount: departmentNames.length,
                           itemBuilder: (context, index) {
                             String departmentName = departmentNames[index];
                             String points = pointList[index];
 
-                            return Padding(
-                              padding:  EdgeInsets.symmetric(horizontal: width*.040,vertical: height*0.01),
-                              child: Container(
-                               height: height*0.070,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: index + 1 == 1 ? Colors.white: Color.fromRGBO(107, 230, 76, 0.60),
+                            return InkWell(
 
-                                ),
-                                  color: index + 1 == 1 ? Color(0xFF82AC57) :index + 1 == 2 ? Color.fromRGBO(107, 230, 76, 0.30) : Colors.black,
-                                  borderRadius: BorderRadius.all(Radius.circular(width*0.03)),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding:  EdgeInsets.symmetric(vertical: height*0.0075,horizontal: width*0.02),
-                                      child: Container(
-                                        width: width*0.10,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular((width*0.2)),
-                                          color: index + 1 == 1 ? Colors.white: Color(0xFF82AC57),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                              (index+1).toString(),
-                                            style: GoogleFonts.roboto(
-                                              color: index + 1 == 1 ? Colors.black87: Colors.white,
-                                              fontSize: height*0.03,
-                                              fontWeight: FontWeight.w700
+                              onTap: (){
+                                if(departmentName=='CSE')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => CseScreen()));
+                                }
+                                else if(departmentName=='ECE')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => EceScreen()));
+                                }
+                                else if(departmentName=='MECH')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => MechScreen()));
+                                }
+                                else if(departmentName=='CIVIL')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => CivilScreen()));
+                                }
+                                else if(departmentName=='META')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => MetaScreen()));
+                                }
+                                else if(departmentName=='CHEM-MIN')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Chemical()));
+                                }
+                                else if(departmentName=='ARCHI')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => ArchiScreen()));
+                                }
+                                else if(departmentName=='EEE')
+                                {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => EeeScreen()));
+                                }
+                              },
+                              child: Padding(
+                                padding:  EdgeInsets.symmetric(horizontal: width*.040,vertical: height*0.01),
+                                child: Container(
+                                 height: height*0.070,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: index + 1 == 1 ? Colors.white: Color.fromRGBO(107, 230, 76, 0.60),
+
+                                  ),
+                                    color: index + 1 == 1 ? Color(0xFF82AC57) :index + 1 == 2 ? Color.fromRGBO(107, 230, 76, 0.30) : Colors.black,
+                                    borderRadius: BorderRadius.all(Radius.circular(width*0.03)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:  EdgeInsets.symmetric(vertical: height*0.0075,horizontal: width*0.02),
+                                        child: Container(
+                                          width: width*0.10,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular((width*0.2)),
+                                            color: index + 1 == 1 ? Colors.white: Color(0xFF82AC57),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                                (index+1).toString(),
+                                              style: GoogleFonts.roboto(
+                                                color: index + 1 == 1 ? Colors.black87: Colors.white,
+                                                fontSize: height*0.03,
+                                                fontWeight: FontWeight.w700
+                                              ),
+
                                             ),
-
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.symmetric(vertical: height*0.0078,horizontal: width*0.02),
-                                      child: SizedBox(
-                                        width: width*0.3,
+                                      Padding(
+                                        padding:  EdgeInsets.symmetric(vertical: height*0.0078,horizontal: width*0.02),
+                                        child: SizedBox(
+                                          width: width*0.3,
 
-                                        child: Text(
-                                          departmentName,
-                                          style: GoogleFonts.roboto(
-                                              color: index + 1 == 1 ? Colors.black87: Colors.white,
-                                              fontSize: height*0.02,
-                                              fontWeight: FontWeight.w700
-                                          ),
-
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.symmetric(vertical: height*0.0078,horizontal: width*0.01),
-                                      child: SizedBox(
-                                        width: width*0.3,
-
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
                                           child: Text(
-                                            points,
+                                            departmentName,
                                             style: GoogleFonts.roboto(
                                                 color: index + 1 == 1 ? Colors.black87: Colors.white,
                                                 fontSize: height*0.02,
@@ -516,10 +561,29 @@ class _IgLeaderScreenState extends State<IgLeaderScreen> {
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                      Padding(
+                                        padding:  EdgeInsets.symmetric(vertical: height*0.0078,horizontal: width*0.01),
+                                        child: SizedBox(
+                                          width: width*0.3,
 
+                                          child: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                              points,
+                                              style: GoogleFonts.roboto(
+                                                  color: index + 1 == 1 ? Colors.black87: Colors.white,
+                                                  fontSize: height*0.02,
+                                                  fontWeight: FontWeight.w700
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                ),
                               ),
                             );
                           },),

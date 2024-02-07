@@ -22,7 +22,7 @@ Map<String, String> stagePlayData = {
 
 Map<String, String> streetPlayData = {
   'Civil': 'Purush',
-  'Chem mine': 'Delocalisatio',
+  'Chem mine': 'Delocalisation',
   'CSE': 'Family',
   'MME': 'Ahnkar',
   'EEE': 'Colonization',
@@ -33,7 +33,7 @@ Map<String, String> streetPlayData = {
 
 Map<String, String> campusDecorData = {
   'Civil': 'Vikings',
-  'Chem mine': 'Chandragupta Maurya (Maurya Empire)',
+  'Chem mine': 'Maurya Empire',
   'CSE': 'Roman Empire',
   'MME': 'Japanese Empire',
   'EEE': 'Maratha Empire',

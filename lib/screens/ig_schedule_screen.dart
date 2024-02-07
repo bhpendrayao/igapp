@@ -43,8 +43,6 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
   }
   Future<void> _refreshdata(String data,String d) async {
     await igViewModel.fetchIgsheduleApi(data,dept);
-    print(data);
-    print(dept);
     setState(() {
       name = data;
       dept = d; // Update the name variable after fetching data
@@ -62,32 +60,31 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
     }
     return Scaffold(
       backgroundColor: Colors.black87,
-      appBar: AppBar(
+      appBar:AppBar(
         backgroundColor: Colors.black87,
-        leading: Padding(
-          padding:  EdgeInsets.only(top: height*0.01),
-          child: IconButton(
-            icon: Icon(
+        leading: IconButton(
+          icon: Icon(
               Icons.arrow_left,
               color: Color(0xFF82AC57),
-              size: height * 0.06,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
+              size: height * 0.05
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Padding(
-          padding:  EdgeInsets.only(top: height*0.037),
-          child: Text(
-            "SCHEDULE",
-            style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.029,fontWeight: FontWeight.w700),
-          ),
+        title: Row(
+          children: [
+            Padding(
+              padding:  EdgeInsets.only(left: width*0.18),
+              child: Text(
+                "SCHEDULE",
+                style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.02,fontWeight: FontWeight.w700),
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-
-
         shape:const CircleBorder(
             side: BorderSide(width: 3,
               color: Colors.white,)
@@ -154,7 +151,7 @@ class _IgScheduleScreenState extends State<IgScheduleScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 25.0),
+              padding:  EdgeInsets.only(top: height*.001),
               child: Container(
                 color: Colors.white,
                 height: height * 0.001,

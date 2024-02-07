@@ -44,26 +44,26 @@ class _IgArticleScreenState extends State<IgArticleScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        leading: Padding(
-          padding:  EdgeInsets.only(top: height*0.006),
-          child: IconButton(
-            icon: Icon(
+        leading: IconButton(
+          icon: Icon(
               Icons.arrow_left,
               color: Color(0xFF82AC57),
-              size: height * 0.065,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
+              size: height * 0.05
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Padding(
-          padding:  EdgeInsets.only(top: height*0.037),
-          child: Text(
-            "ARTICLE",
-            style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.029,fontWeight: FontWeight.w700),
-          ),
+        title: Row(
+          children: [
+            Padding(
+              padding:  EdgeInsets.only(left: width*0.18),
+              child: Text(
+                "ARTICLE",
+                style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.02,fontWeight: FontWeight.w700),
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
-
       ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -137,7 +137,7 @@ class _IgArticleScreenState extends State<IgArticleScreen> {
 
 
           Padding(
-            padding:  EdgeInsets.only(left: width*.03,top: height*0.03),
+            padding:  EdgeInsets.only(left: width*.03,top: height*0.003),
             child: Container(
               color: Colors.black,
               height: height * 0.09,

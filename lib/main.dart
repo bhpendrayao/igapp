@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:igapp/DeptScreens/ArchiScreen.dart';
+import 'package:igapp/DeptScreens/ChemicalScreen.dart';
+import 'package:igapp/DeptScreens/CivilScreen.dart';
+import 'package:igapp/DeptScreens/CseScreen.dart';
+import 'package:igapp/DeptScreens/EeeScreen.dart';
+import 'package:igapp/DeptScreens/MechScreen.dart';
+import 'package:igapp/DeptScreens/MetaScreen.dart';
+import 'package:igapp/DeptScreens/Mining.dart';
 import 'package:igapp/screens/SplashScreen.dart';
 import 'package:igapp/screens/ig_schedule_screen.dart';
 
-void main() {
+import 'DeptScreens/EceScreen.dart';
+
+
+void main()  {
+
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -13,6 +24,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/ece': (context) => EceScreen(),
+        '/cse': (context) => CseScreen(),
+        '/civil': (context) => CivilScreen(),
+        '/mech': (context) => MechScreen(),
+        '/archi': (context) => ArchiScreen(),
+        '/eee': (context) => EeeScreen(),
+        '/cme' :(context) => Chemical(),
+        '/min':(context) => Mining(),
+        '/mme':(context) => MetaScreen(),
+
+
+
+        // Add more routes for other screens here
+      },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(

@@ -29,24 +29,25 @@ class _IgNotificationScreenState extends State<IgNotificationScreen> {
     final height = MediaQuery.sizeOf(context).height * 1;
     return Scaffold(
       appBar: AppBar(
-        leading:  Padding(
-          padding:  EdgeInsets.only(top: height*0.01),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_left,
-              color: Color(0xFF82AC57),
-              size: height * 0.06,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
+        leading:  IconButton(
+          icon: Icon(
+            Icons.arrow_left,
+            color: Color(0xFF82AC57),
+            size: height * 0.05,
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         titleSpacing: 20,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 30.0),
-          child: Text(
-            "Notification",
-            style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.02,fontWeight: FontWeight.w600),
-          ),
+        title: Row(
+          children: [
+            Padding(
+              padding:  EdgeInsets.only(left: width*0.18),
+              child: Text(
+                "Notification",
+                style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.02,fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
         backgroundColor: Colors.black,

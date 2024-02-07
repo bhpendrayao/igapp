@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:igapp/DeptScreens/CseScreen.dart';
+import 'package:igapp/DeptScreens/EceScreen.dart';
 import 'package:igapp/models/notificationmodel.dart';
 import 'package:igapp/screens/StudentCouncilInfo.dart';
 import 'package:igapp/screens/article_screen.dart';
@@ -13,6 +14,7 @@ import 'package:igapp/screens/notification_screen.dart';
 import 'package:igapp/screens/pic0ftheday.dart';
 import 'package:igapp/view_model/ig_view_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 class HomeScreen3 extends StatefulWidget {
   const HomeScreen3({super.key});
 
@@ -53,6 +55,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -67,15 +70,28 @@ class _HomeScreen3State extends State<HomeScreen3> {
       'deptlogos/MIN.png',
       'deptlogos/MME.png',
       'deptlogos/MECH.png',
-      // Add more asset image paths as needed
+
     ];
+    List<String> deptroutes = [
+      '/ece',
+      '/cme',
+      '/civil',
+      '/cse',
+      '/eee',
+      '/archi',
+      '/min',
+      '/mme',
+      '/mech',
+
+    ];
+
+
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.black,
       appBar: AppBar(
 
-          title: Text("अद्वैतम्",style: TextStyle(color: Colors.white,fontSize:height*0.03),),
-
+          title: Text("अद्वैतम्",style: TextStyle(color: Colors.white,fontSize:height*0.02),),
 
           elevation: 0,
           centerTitle: true,
@@ -107,7 +123,8 @@ class _HomeScreen3State extends State<HomeScreen3> {
                         icon: Icon(Icons.notifications_active,
                           color: Colors.redAccent,),
                         onPressed: () {
-                          _scaffoldKey.currentState!.openEndDrawer();
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) =>IgNotificationScreen()));
                         },
                       );
                     }
@@ -156,9 +173,9 @@ class _HomeScreen3State extends State<HomeScreen3> {
                 radius: width*0.06,
                 child: Image.asset('NavigationBaritems/podium.png'))),
         onPressed: () {
+
           Navigator.push(context,
               MaterialPageRoute(builder: (context) =>IgLeaderScreen()));
-
         },
       ),
       bottomNavigationBar: BottomAppBar(
@@ -222,13 +239,22 @@ class _HomeScreen3State extends State<HomeScreen3> {
             itemBuilder: (context, index) {
               return Padding(
                 padding:  EdgeInsets.all(width*0.03),
-                child: Container(
-                  decoration: BoxDecoration(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context,deptroutes[index]);
+                  },
+                  child: Hero(
+                    tag: deptroutes[index],
+                    child: Container(
+                      decoration: BoxDecoration(
 
-                    borderRadius: BorderRadius.circular(height*0.9),
 
+                        borderRadius: BorderRadius.circular(height*0.9),
+
+                      ),
+                      child: Image.asset(assetImages[index]),
+                    ),
                   ),
-                  child: Image.asset(assetImages[index]),
                 ),
               );
             }),

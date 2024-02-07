@@ -20,16 +20,18 @@ class _AboutIDSState extends State<AboutIG> {
             icon: Icon(
               Icons.arrow_left,
               color: Color(0xFF82AC57),
-              size: height * 0.06,
+              size: height * 0.05,
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: Padding(
-            padding: EdgeInsets.only(top: height * 0.03),
-            child: Text(
-              "अद्वैतम्",
-              style: TextStyle(color: Colors.white, fontSize: height * 0.035),
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "अद्वैतम्",
+                style: TextStyle(color: Colors.white, fontSize: height * 0.02),
+              ),
+            ],
           ),
           elevation: 0,
           centerTitle: true,

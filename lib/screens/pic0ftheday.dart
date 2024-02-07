@@ -44,23 +44,24 @@ class _PicofthedayState extends State<Picoftheday> {
       backgroundColor: Colors.black,
       appBar: AppBar(
       backgroundColor: Colors.black87,
-      leading: Padding(
-        padding:  EdgeInsets.only(top: height*0.01),
-        child: IconButton(
-          icon: Icon(
-            Icons.arrow_left,
-            color: Color(0xFF82AC57),
-            size: height * 0.06,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_left,
+          color: Color(0xFF82AC57),
+          size: height * 0.05,
         ),
+        onPressed: () => Navigator.of(context).pop(),
       ),
-      title: Padding(
-        padding:  EdgeInsets.only(top: height*0.037),
-        child: Text(
-          "PIC OF THE DAY",
-          style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.029,fontWeight: FontWeight.w700),
-        ),
+      title: Row(
+        children: [
+          Padding(
+            padding:  EdgeInsets.only(left: width*0.18),
+            child: Text(
+              "PIC OF THE DAY",
+              style: GoogleFonts.roboto(color: Colors.white, fontSize: height * 0.02,fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
       ),
       centerTitle: true,
     ),
@@ -134,7 +135,7 @@ class _PicofthedayState extends State<Picoftheday> {
         child: Column(
           children: [
             Padding(
-              padding:  EdgeInsets.only(left: width*.04,top: height*0.03),
+              padding:  EdgeInsets.only(left: width*.04,top: height*0.02),
               child: Container(
                 color: Colors.black,
                 height: height * 0.09,

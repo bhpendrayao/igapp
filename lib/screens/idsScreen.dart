@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:igapp/screens/StudentCouncilInfo.dart';
 import 'package:igapp/screens/ig_schedule_screen.dart';
 import 'package:igapp/screens/igleader2.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/link.dart';
 class IdsScreen extends StatelessWidget {
   const IdsScreen({super.key});
 
@@ -12,26 +14,29 @@ class IdsScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
 
+
     return Scaffold(
       backgroundColor: Colors.black,
 
       appBar: AppBar(
-        leading: Padding(
-          padding:  EdgeInsets.only(top: height*0.006),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_left,
-              color: Color(0xFF82AC57),
-              size: height * 0.065,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_left,
+            color: Color(0xFF82AC57),
+            size: height * 0.05,
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.black87,
-        title:Padding(
-            padding: EdgeInsets.only(top: height*0.03),
-            child: Text("About IDS" ,
-              style: GoogleFonts.roboto(color: Colors.white,fontSize: height*0.029,fontWeight: FontWeight.w700),)),
+        title:Row(
+          children: [
+            Padding(
+              padding:  EdgeInsets.only(left: width*0.15),
+              child: Text("ABOUT IDS" ,
+                style: GoogleFonts.roboto(color: Colors.white,fontSize: height*0.02,fontWeight: FontWeight.w700),),
+            ),
+          ],
+        ),
         centerTitle: true,
 
       ),
@@ -147,19 +152,33 @@ class IdsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    width:width*0.45,
-                    height: height*0.15,
+                  InkWell(
+                    onTap: () async{
+                      final url ='https://idsvnit.in/';
+                      if(await canLaunch(url))
+                        {
+                          await launch(
+                            url,
+                            forceWebView: true,
+                            enableJavaScript: true,
+                          );
+                        }
+                    },
+                    child: Container(
+                      width:width*0.45,
+                      height: height*0.15,
 
 
-                    decoration: ShapeDecoration(
-                      shape: CircleBorder(),
-                      color: Colors.transparent,
-                    ),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.black,
-                      backgroundImage: AssetImage('deptlogos/ids333-removebg-preview.png',),
+                      decoration: ShapeDecoration(
+                        shape: CircleBorder(),
+                        color: Colors.transparent,
+                      ),
+                      child: CircleAvatar(
 
+                        backgroundColor: Colors.black,
+                        backgroundImage: AssetImage('deptlogos/ids333-removebg-preview.png',),
+
+                      ),
                     ),
                   )
                 ],
